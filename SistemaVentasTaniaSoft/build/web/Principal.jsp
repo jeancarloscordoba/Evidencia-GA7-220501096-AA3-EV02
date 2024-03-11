@@ -11,22 +11,12 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!--<li class="nav-item active">
-                        <a style="margin-left: 10px; border: none" class="btn btn-outline-light font-weight-bold" href="#">Inicio</a>
-                    </li>-->
-                    <li class="nav-item">
-                        <a style="margin-left: 10px; border: none" class="btn btn-outline-light font-weight-bold" href="Controlador?menu=Producto&accion=Listar" target="myFrame">Productos</a>
-                    </li>
                     <li class="nav-item">
                         <a style="margin-left: 10px; border: none" class="btn btn-outline-light font-weight-bold" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleados</a>
                     </li>
                     <li class="nav-item">
                         <a style="margin-left: 10px; border: none" class="btn btn-outline-light font-weight-bold" href="Controlador?menu=Cliente&accion=Listar" target="myFrame">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a style="margin-left: 10px; border: none" class="btn btn-outline-light font-weight-bold" href="Controlador?menu=NuevaVenta&accion=default" target="myFrame">Nueva Venta</a>
-                    </li>
-                     
+                    </li>                     
                 </ul>
             </div>
             <div class="dropdown">

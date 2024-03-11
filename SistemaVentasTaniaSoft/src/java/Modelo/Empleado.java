@@ -88,10 +88,4 @@ public class Empleado implements Serializable { //Esta clase Empleado se utiliza
         this.user = user;
     }
     
-    
-    /*@Override
-    public String toString() {
-        return this.nom; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }*/
-    
 }

@@ -1,9 +1,6 @@
 package Controlador;
 
-import Modelo.Cliente;
 import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,7 +39,7 @@ public class PersistanceController implements Serializable {
         makeEntitiMF();
     }
 
-    //Listar Clientes
+    //Listar
     public static <T> List<T> buscarPorClase(Class<T> clase) {
         initEM();
         List<T> lista = null;
@@ -59,12 +56,11 @@ public class PersistanceController implements Serializable {
             emf.close();
             return lista;
         }
-        //return lista;
     }
     
     
     /***************OPERACIONES CRUD*********************/
-    //Guardar Cliente (CREATE)
+    //Guardar (CREATE)
     public static <T> boolean guardar(T entidad) {
         initEM();
         try {
@@ -82,8 +78,8 @@ public class PersistanceController implements Serializable {
         }
     }
 
-    //Actualizar Cliente (UPDATE)    
-    public static <T> boolean actualizar(T entidad) { //AUTOR: Señor Tomas 
+    //Actualizar (UPDATE)    
+    public static <T> boolean actualizar(T entidad) {
         initEM();
         em.getTransaction().begin();
         try {
@@ -95,78 +91,13 @@ public class PersistanceController implements Serializable {
             e.printStackTrace();
             return false;
         } finally {
-            //em.close();
             if (em != null && em.isOpen()) {
                 em.close();
             }
         }
     }
     
-    /*public static <T> void actualizarEntidades(T entidadActualizada) {
-        initEM();
-        try {
-            em.getTransaction().begin();
-            // Recuperar la entidad existente de la base de datos
-            T entidadExistente = (T) em.find(entidadActualizada.getClass(), obtenerId(entidadActualizada));
-            // Actualizar los campos de la entidadExistente con los valores de entidadActualizada
-            actualizarCampos(entidadExistente, entidadActualizada);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
-    }
-    
-    public static <T> boolean actualizar(T entidadActualizada) {
-        initEM();
-        try {
-            em.getTransaction().begin();
-            //em.refresh(entidadActualizada);
-            actualizarEntidades(entidadActualizada); // Llamar al método genérico para preparar la entidad actualizada
-            em.merge(entidadActualizada); // Realizar la operación de merge con la entidad actualizada
-            em.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            e.printStackTrace();
-            return false;
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
-    }
-
-    private static <T> Serializable obtenerId(T entidad) {
-        try {
-            Method getIdMethod = entidad.getClass().getMethod("getId");
-            return (Serializable) getIdMethod.invoke(entidad);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private static <T> void actualizarCampos(T entidadExistente, T entidadActualizada) throws IllegalAccessException {
-        Field[] campos = entidadActualizada.getClass().getDeclaredFields();
-        for (Field campo : campos) {
-            campo.setAccessible(true);
-            Object valor = campo.get(entidadActualizada);
-            if (valor != null) {
-                campo.set(entidadExistente, valor);
-            }
-        }
-    }*/
-    
-    //Buscar Cliente por Id (Usado para editar un cliente) (READ: Leer o Consultar)
+    //Buscar por Id (Usado para editar) (READ: Leer o Consultar)
     public static <T> Object buscarPorId(Class<T> clase, int id) {
         initEM();
         try {
@@ -182,7 +113,7 @@ public class PersistanceController implements Serializable {
         }
     }
 
-    //Eliminar Cliente por Id (DELETE)
+    //Eliminar por Id (DELETE)
     public static <T> boolean eliminarPorId(int id, Class<T> clase) {
         initEM();
         try {
